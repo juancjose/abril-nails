@@ -1,7 +1,7 @@
 # 💅 Abril Nails — Landing page
 
 Página web de **Abril Nails**, emprendimiento de manicura y nail art en Buenos Aires.
-Paleta: **salmón** (`#FA8072`) con detalles en **turquesa** (`#40E0D0` / `#1FB5AD`).
+Paleta **monocromática salmón**: salmón `#FA8072`, salmón oscuro `#E9967A`, salmón profundo `#B04A3B` / `#8F3A2E` (botones y acentos, contraste accesible con texto blanco), tintes claros `#FDD5CE` / `#FEEBE7` y fondo crema `#FFF8F3`.
 
 Sitio 100 % estático (HTML + CSS + JS, sin build): se puede subir directo a GitHub Pages, Vercel o Netlify.
 
@@ -39,7 +39,7 @@ Reemplazá el bloque `<div class="about-photo" …><span>Tu foto acá</span></di
 `<img class="about-photo" src="assets/abril.jpg" alt="Abril, manicurista" style="object-fit:cover">`.
 
 ### Colores
-Están todos al principio de `styles.css`, en `:root` (`--salmon`, `--turq`, etc.).
+Están todos al principio de `styles.css`, en `:root` (`--salmon`, `--salmon-dark`, `--coral`, `--coral-dark`, `--coral-deep`, etc.). Si cambiás `--coral-dark`, revisá que el texto blanco de los botones siga siendo legible (contraste mínimo 4.5:1).
 
 ## Cómo publicar
 
