@@ -19,7 +19,7 @@ assets/       → imágenes (logo/favicon y, más adelante, fotos)
 ### Contacto
 - **WhatsApp**: buscá `5491156972933` en `index.html` (aparece en el botón del hero, la tarjeta de contacto y el botón flotante). El formato es `549` + código de área sin 0 + número sin 15. El texto que se ve está en `+54 9 11 5697-2933`.
 - **Instagram**: buscá `nails.abryll` en `index.html`.
-- **Ubicación y horarios**: reemplazá `[BARRIO]` y `[DÍAS Y HORARIOS]` en la sección Contacto.
+- **Ubicación, horarios y medios de pago**: en la tarjeta "Dónde estoy" de la sección Contacto (hoy: Beccar, San Isidro · `[DÍAS Y HORARIOS]` · transferencia o efectivo).
 
 ### Precios
 Cada servicio muestra "Consultá precio". Si querés mostrar precios, cambiá el texto dentro de `<span class="price">…</span>`.
@@ -51,7 +51,8 @@ Están todos al principio de `styles.css`, en `:root` (`--salmon`, `--turq`, etc
 
 ## ✅ Pendientes para completar
 
-- [ ] `[BARRIO]` — barrio o zona donde atiende
+- [x] Barrio: Beccar, San Isidro
+- [x] Medios de pago: transferencia o efectivo
 - [ ] `[DÍAS Y HORARIOS]` — días y horario de atención
 - [ ] Fotos reales de la galería (6 tiles de muestra con degradés)
 - [ ] Foto para "Sobre mí" ("Tu foto acá")
