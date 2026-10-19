@@ -23,3 +23,21 @@ if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: re
 
 // Año del footer
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// Tema claro / oscuro
+const root = document.documentElement;
+const themeBtn = document.querySelector('.theme-toggle');
+const themeMeta = document.querySelector('meta[name="theme-color"]');
+const applyTheme = (t, save) => {
+  root.dataset.theme = t;
+  themeBtn.setAttribute('aria-pressed', t === 'dark');
+  themeMeta.content = t === 'dark' ? '#141110' : '#FBF7F4';
+  if (save) { try { localStorage.setItem('tema', t); } catch (e) {} }
+};
+applyTheme(root.dataset.theme === 'dark' ? 'dark' : 'light', false);
+themeBtn.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark', true));
+// Si la persona no eligió tema, seguir el del sistema
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+  let saved = null; try { saved = localStorage.getItem('tema'); } catch (_) {}
+  if (!saved) applyTheme(e.matches ? 'dark' : 'light', false);
+});
