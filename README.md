@@ -4,7 +4,7 @@ Página web de **Abril Nails**, emprendimiento de manicura y nail art en Buenos 
 Diseño minimalista y editorial: fondo crema, texto oscuro y **un solo acento salmón**.
 
 - **Tipografía** (la misma del sitio Blunt): **Archivo** expandida (`font-stretch: 125%`, peso 450–600) para títulos y logo, e **Inter** (300/400/500) para textos, botones y etiquetas en mayúsculas espaciadas. Se cargan desde Google Fonts con `@import` al principio de `styles.css`.
-- **Colores**: crema `#FBF7F4`, crema rosado `#F6EDE8` (secciones alternas), texto `#1F1A19`, texto secundario `#6E625F`, líneas `#E6D9D3`, acento salmón profundo `#B04A3B` (hover `#943C2F`) y tintes salmón `#F4D9D1` / `#EFCBC0` / `#F8E4DE` para los espacios de fotos. Todos los textos cumplen contraste WCAG AA.
+- **Colores (modo claro)**: crema `#FBF7F4`, crema rosado `#F6EDE8` (secciones alternas), texto `#1F1A19`, texto secundario `#6E625F`, líneas `#E6D9D3`. Botón principal salmón suave `#F2A493` con texto oscuro (8,6:1), hover `#E98C78` (7:1). Los acentos chicos (números de servicios, links) van en texto oscuro con un marcador/subrayado salmón `#E98C78`; el anillo de foco es oscuro para que se vea bien. Tintes `#F4D9D1` / `#EFCBC0` / `#F8E4DE` para los espacios de fotos. Todos los textos cumplen contraste WCAG AA.
 - **Modo claro / oscuro**: botón con ícono de luna/sol en el header. Por defecto sigue la preferencia del sistema (`prefers-color-scheme`) y recuerda la elección en `localStorage` (clave `tema`). Un script mínimo en el `<head>` aplica el tema antes de pintar para evitar parpadeos. Paleta oscura: fondo `#141110` / `#1C1817`, texto `#F3ECE8`, secundario `#ADA09B`, líneas `#2F2826`, acento salmón claro `#F08A78` (texto oscuro sobre los botones) y tintes `#3A2824` / `#46302B` / `#2E211F` para las fotos. Se definen en `[data-theme="dark"]` en `styles.css`.
 
 Sitio 100 % estático (HTML + CSS + JS, sin build): se puede subir directo a GitHub Pages, Vercel o Netlify.
@@ -33,7 +33,7 @@ Los espacios de fotos son bloques color salmón claro (`<div class="ph …">`). 
 - **Sobre mí** (`.ph-about`): `<img class="ph-about" src="assets/abril.jpg" alt="Abril, manicurista" style="width:100%;object-fit:cover">`
 
 ### Colores
-Están todos al principio de `styles.css`, en `:root` (`--bg`, `--fg`, `--accent`, `--ph-1`, etc.). Si cambiás `--accent`, revisá que el texto blanco de los botones siga siendo legible (contraste mínimo 4.5:1).
+Están todos al principio de `styles.css`, en `:root` (`--bg`, `--fg`, `--accent`, `--accent-hover`, `--marker`, `--focus`, `--ph-1`, etc.). Si cambiás `--accent`, revisá que el texto de los botones (`--on-accent`) siga teniendo contraste mínimo 4.5:1.
 
 ## Cómo publicar
 

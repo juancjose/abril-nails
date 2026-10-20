@@ -7,12 +7,16 @@
   --fg: #1F1A19;        /* texto */
   --muted: #6E625F;     /* texto secundario (AA sobre fondo) */
   --line: #E6D9D3;      /* líneas finas */
-  --accent: #B04A3B;    /* salmón profundo: botones y acentos (AA con blanco) */
-  --accent-hover: #943C2F;
+  --accent: #F2A493;    /* salmón suave: relleno de botones (texto oscuro, 8.6:1) */
+  --accent-hover: #E98C78; /* salmón un poco más intenso (texto oscuro, 7:1) */
+  --accent-text: #1F1A19;  /* textos chicos de acento: oscuros, con marcador salmón */
+  --marker: #E98C78;       /* subrayados / marcadores decorativos */
+  --focus: #1F1A19;        /* anillo de foco (alto contraste) */
+  --wa-icon: #1F1A19;
   --ph-1: #F4D9D1;      /* placeholders de fotos: tintes salmón */
   --ph-2: #EFCBC0;
   --ph-3: #F8E4DE;
-  --on-accent: #FFFFFF;  /* texto sobre botón salmón */
+  --on-accent: #1F1A19;  /* texto sobre botón salmón */
   --header-bg: rgba(251, 247, 244, .9);
   --ease: cubic-bezier(.22, .61, .36, 1);
   color-scheme: light;
@@ -26,6 +30,10 @@
   --line: #2F2826;
   --accent: #F08A78;     /* salmón claro para contraste sobre fondo oscuro */
   --accent-hover: #F5A595;
+  --accent-text: #F08A78;
+  --marker: #F08A78;
+  --focus: #F08A78;
+  --wa-icon: #F08A78;
   --ph-1: #3A2824;
   --ph-2: #46302B;
   --ph-3: #2E211F;
@@ -57,7 +65,7 @@ section { padding: 112px 0; }
 .alt { background: var(--alt); }
 .skip { position: absolute; left: -999px; }
 .skip:focus { left: 12px; top: 12px; background: var(--fg); color: var(--bg); padding: 8px 12px; z-index: 99; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 
 /* Header */
 header.site { position: sticky; top: 0; z-index: 40; background: var(--header-bg); backdrop-filter: saturate(140%) blur(10px); -webkit-backdrop-filter: saturate(140%) blur(10px); border-bottom: 1px solid var(--line); }
@@ -84,12 +92,12 @@ header.site nav.main { margin-left: auto; }
 
 /* Botones */
 .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-.btn { display: inline-block; border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent); padding: 15px 30px; font: 400 .72rem Inter, sans-serif; letter-spacing: .2em; text-transform: uppercase; transition: background .35s var(--ease), color .35s var(--ease), border-color .35s; }
+.btn { display: inline-block; border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent); padding: 15px 30px; font: 500 .72rem Inter, sans-serif; letter-spacing: .2em; text-transform: uppercase; transition: background .35s var(--ease), color .35s var(--ease), border-color .35s; }
 .btn:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
 .btn.ghost { background: transparent; color: var(--fg); border-color: var(--fg); }
 .btn.ghost:hover { background: var(--fg); color: var(--bg); }
 .link { font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; padding-bottom: 3px; white-space: nowrap; background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat; transition: background-size .4s var(--ease), color .3s; }
-.link:hover { color: var(--accent); }
+.link:hover { background-image: linear-gradient(var(--marker), var(--marker)); background-size: 100% 2px; }
 
 /* Placeholders de fotos */
 .ph { background: var(--ph-1); }
@@ -110,11 +118,12 @@ header.site nav.main { margin-left: auto; }
 /* Servicios: filas con líneas finas */
 .services { border-bottom: 1px solid var(--line); }
 .services li { display: grid; grid-template-columns: 64px 1fr 1.4fr; gap: 24px; align-items: baseline; padding: 30px 0; border-top: 1px solid var(--line); transition: padding .4s var(--ease); }
-.services .num { font-family: Archivo, sans-serif; font-stretch: 125%; font-size: .8rem; color: var(--accent); letter-spacing: .04em; }
+.services .num { font-family: Archivo, sans-serif; font-stretch: 125%; font-size: .8rem; color: var(--accent-text); letter-spacing: .04em; }
+.services .num::after { content: ""; display: block; width: 14px; height: 2px; margin-top: 8px; background: var(--marker); }
 .services h3 { font-size: 1.3rem; }
 .services p { color: var(--muted); font-size: .95rem; }
-.services li:hover h3 { color: var(--accent); }
-.services h3 { transition: color .3s; }
+.services li:hover h3 { color: var(--accent-text); background-size: 100% 2px; }
+.services h3 { background: linear-gradient(var(--marker), var(--marker)) 0 100% / 0 2px no-repeat; justify-self: start; transition: background-size .4s var(--ease), color .3s; }
 
 /* Galería */
 .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -140,7 +149,14 @@ header.site nav.main { margin-left: auto; }
 .details dt { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
 .details dd { font-size: 1rem; }
 .details a { background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size .4s var(--ease), color .3s; }
-.details a:hover { color: var(--accent); background-size: 100% 1px; }
+.details a { background-image: linear-gradient(var(--marker), var(--marker)); }
+.details a:hover { background-size: 100% 2px; }
+/* En modo oscuro se mantiene el estilo original (acento en el texto, sin marcadores) */
+[data-theme="dark"] .services .num::after { display: none; }
+[data-theme="dark"] .services h3 { background: none; }
+[data-theme="dark"] .details a { background-image: linear-gradient(currentColor, currentColor); }
+[data-theme="dark"] .details a:hover { color: var(--accent); background-size: 100% 1px; }
+[data-theme="dark"] .link:hover { color: var(--accent); background-image: linear-gradient(currentColor, currentColor); background-size: 100% 1px; }
 
 /* Footer */
 footer.site { border-top: 1px solid var(--line); padding: 56px 0 32px; font-size: .88rem; }
@@ -150,7 +166,7 @@ footer.site { border-top: 1px solid var(--line); padding: 56px 0 32px; font-size
 .legal { color: var(--muted); font-size: .78rem; border-top: 1px solid var(--line); padding-top: 24px; }
 
 /* WhatsApp flotante, discreto */
-.wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 50; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--bg); color: var(--accent); border: 1px solid var(--line); transition: background .3s, color .3s, border-color .3s; }
+.wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 50; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--bg); color: var(--wa-icon); border: 1px solid var(--line); transition: background .3s, color .3s, border-color .3s; }
 .wa-float svg { width: 22px; height: 22px; }
 .wa-float:hover { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
 
